@@ -7,8 +7,6 @@ void setupMaxBotRanger()
   pinMode(MBEchoPin, INPUT);
   
   digitalWrite(MBTrigPin, LOW);
-  
-  Serial.begin(9600);
 }
 
 float measureMaxBotRange()
@@ -22,8 +20,6 @@ float measureMaxBotRange()
   
   pulseLenMicroseconds = pulseIn(MBEchoPin, HIGH);
   distanceInCentimeters = pulseLenMicroseconds / 29.387 / 2;
-  
-  Serial.println(distanceInCentimeters);
  
   return distanceInCentimeters; 
 }

@@ -35,14 +35,11 @@ void setupOutput()
 bool alarmCondition()
 {
   // return PushButtonAlarmCondition();
-  Serial.println("Called alarmCondition");
   return MaxBotAlarmCondition();
 }
 
 void setup()
 {
-  Serial.begin(9600);
-  Serial.println("Called ArtAlarm setup");
   setupSensor();
   setupOutput();
 }
