@@ -21,9 +21,13 @@
  * For further mods see GitHub deanlie/ArtAlarm
  */
 
+int buttonPin = 7;
+int thresholdInCm = 30;
+
 void setupSensor()
 {
-  setupPushButtonSensor();
+  setupPushButtonSensor(buttonPin);
+  setupMaxBotRanger(thresholdInCm);
 }
 
 void setupOutput()
@@ -34,12 +38,13 @@ void setupOutput()
 
 bool alarmCondition()
 {
-  // return PushButtonAlarmCondition();
-  return MaxBotAlarmCondition();
+  return (PushButtonAlarmCondition() ||
+          MaxBotAlarmCondition());
 }
 
 void setup()
 {
+  Serial.begin(9600);
   setupSensor();
   setupOutput();
 }
@@ -52,7 +57,7 @@ void loop()
   } else {
     noRedLight();
   }
-  delay(500);
+  delay(200);
 }
 
   

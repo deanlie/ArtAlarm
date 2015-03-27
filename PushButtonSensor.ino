@@ -1,7 +1,8 @@
-int sensorPin = 7;
+int sensorPin;
 
-void setupPushButtonSensor()
+void setupPushButtonSensor(int useThisPin)
 {
+  sensorPin = useThisPin;
   pinMode(sensorPin, INPUT);
 }
 

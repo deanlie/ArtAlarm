@@ -2,6 +2,7 @@
 int speakerPin = 8;
 int iSong = 0;
 int nSounds = 4;
+int nRepeats = 4;
 
 void setupAudioAlarm()
 {
@@ -87,16 +88,16 @@ void carAlarm(int i)
   int switchValue = (i / 3) % nSounds;
   switch(switchValue) {
     case 0:
-      chirp(16, 262, 25);
+      chirp(16, 440, 15);
       break;
     case 1:
-      chirpDown(16, 262, 25);
+      chirpDown(16, 800, 15);
       break;
     case 2:
-      alarmBeep(440, 250);
+      alarmBeep(660, 100);
       break;
     case 3:
-      siren(24, 800, 20);
+      siren(24, 800, 10);
       break;
     default:
       break;

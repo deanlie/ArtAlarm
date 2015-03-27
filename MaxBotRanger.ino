@@ -1,8 +1,12 @@
 int MBTrigPin = 3; // yellow
 int MBEchoPin = 2; // green
 
-void setupMaxBotRanger()
+int maxBotAlarmDistance;
+
+void setupMaxBotRanger(int distance)
 {
+  maxBotAlarmDistance = distance;
+  
   pinMode(MBTrigPin, OUTPUT);
   pinMode(MBEchoPin, INPUT);
   
@@ -20,6 +24,9 @@ float measureMaxBotRange()
   
   pulseLenMicroseconds = pulseIn(MBEchoPin, HIGH);
   distanceInCentimeters = pulseLenMicroseconds / 29.387 / 2;
+  
+  Serial.print("Distance in cm: ");
+  Serial.println(distanceInCentimeters);
  
   return distanceInCentimeters; 
 }
@@ -28,5 +35,6 @@ bool MaxBotAlarmCondition()
 {
   float distanceInCentimeters = measureMaxBotRange();
   
-  return (distanceInCentimeters < 20);
+  return (distanceInCentimeters > 0.01 &&
+          distanceInCentimeters < maxBotAlarmDistance);
 }
